@@ -3,14 +3,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ITL_AF_2025.Views.ButtonPage"
-    Title="Button">
-    <Grid RowDefinitions="*, *, *" VerticalOptions="Center">
+    BackgroundColor="{StaticResource Gray600}"
+    >
+    <Grid
+        RowDefinitions="auto, *, auto"
+        Padding="20">
         <Label
             Grid.Row="0"
             Text="Welcome to Foro academico 2025!"
+            TextColor="White"
             Style="{StaticResource labelPrimaryStyle}"/>
 
-        <StackLayout Grid.Row="1">
+        <StackLayout
+            Grid.Row="1"
+            VerticalOptions="Center">
 
             <Label
                 Text="{Binding FirstText}"
@@ -59,6 +65,7 @@
         <Button
             Grid.Row="2"
             Command="{Binding PlusCommand}"
-            Text="Plus +1"/>
+            Text="Plus +1"
+            Style="{StaticResource buttonPrimaryStyle}"/>
     </Grid>
 </ContentPage>

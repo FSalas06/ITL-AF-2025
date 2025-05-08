@@ -10,6 +10,13 @@ namespace ITL_AF_2025.ViewModels
 		{
             PlusCommand = new Command(PlusOperation);
 		}
+
+        public override void OnAppearing()
+        {
+            base.OnAppearing();
+            FirstText = $"Count {LocalCount}";
+            LocalCount = 0;
+        }
         #endregion Lifecycle
 
         #region Internals
@@ -19,6 +26,10 @@ namespace ITL_AF_2025.ViewModels
             {
                 LocalCount++;
                 FirstText = $"Count {LocalCount}";
+            }
+            else
+            {
+                DisplayAlert($"Limit reached - {Constants.MaxValueInt}");
             }
         }
         #endregion Internal

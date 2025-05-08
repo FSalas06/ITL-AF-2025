@@ -15,5 +15,6 @@ public partial class ButtonPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+		_viewModel.OnAppearing();
     }
 }

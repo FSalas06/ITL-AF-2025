@@ -6,17 +6,23 @@
 
     xmlns:models="clr-namespace:ITL_AF_2025.Models"
 
+    BackgroundColor="{StaticResource Gray600}"
+
     Title="Entry">
     <Grid
-        RowDefinitions="*, auto, *"
+        RowSpacing="20"
+        RowDefinitions="auto, *"
         Padding="20">
         <Label
+            Background="AntiqueWhite"
             Grid.Row="0"
             Text="Entry Data"
             Style="{StaticResource labelPrimaryStyle}"/>
         <StackLayout
             Grid.Row="1"
+            VerticalOptions="CenterAndExpand"
             Spacing="20">
+
             <Entry
                 x:Name="entryData"
                 TextColor="{StaticResource Gray900}"
@@ -28,28 +34,34 @@
                 BorderColor="{StaticResource MidnightBlue}"
                 BackgroundColor="{StaticResource Magenta}"
                 TextColor="White"
+                BorderWidth="1"
+                CornerRadius="7"
                 TextTransform="Uppercase"
                 Text="Save"
                 Command="{Binding SaveTodoListCommand}" />
 
+            <CollectionView
+                ItemsSource="{Binding TodoDataList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TodoDataModel">
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox
+                                Color="Silver"
+                                IsChecked="{Binding IsChecked}"/>
+                            <Label
+                                TextColor="Silver"
+                                FontAttributes="Italic"
+                                FontSize="20"
+                                Text="{Binding Task}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </StackLayout>
-        <CollectionView
-            Grid.Row="2"
-            ItemsSource="{Binding TodoDataList}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:TodoDataModel">
-                    <StackLayout Orientation="Horizontal">
-                        <CheckBox
-                            Color="Silver"
-                            IsChecked="{Binding IsChecked}"/>
-                        <Label
-                            TextColor="Silver"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            Text="{Binding Task}"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        
     </Grid>
 </ContentPage>

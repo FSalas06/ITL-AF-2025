@@ -4,9 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 
     xmlns:views="clr-namespace:ITL_AF_2025.Views"
-    x:Class="ITL_AF_2025.Views.MainPage">
+    x:Class="ITL_AF_2025.Views.MainPage"
 
-    <views:ButtonPage />
-    <views:EntryPage />
+    BarBackground="{StaticResource Gray900Brush}"
+    BarTextColor="{StaticResource Gray100}"
+    
+    SelectedTabColor="{StaticResource Gray950}"
+    UnselectedTabColor="{StaticResource Gray400}"
+    >
+
+    <views:ButtonPage
+        Title="Button"
+        IconImageSource="ic_small_button.png" />
+
+    <views:EntryPage
+        Title="Entry"
+        IconImageSource="ic_textbox.png"/>
 
 </TabbedPage>
