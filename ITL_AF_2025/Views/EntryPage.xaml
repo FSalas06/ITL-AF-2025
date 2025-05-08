@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ITL_AF_2025.Views.EntryPage"
+
+    xmlns:models="clr-namespace:ITL_AF_2025.Models"
+
+    Title="Entry">
+    <Grid
+        RowDefinitions="*, auto, *"
+        Padding="20">
+        <Label
+            Grid.Row="0"
+            Text="Entry Data"
+            Style="{StaticResource labelPrimaryStyle}"/>
+        <StackLayout
+            Grid.Row="1"
+            Spacing="20">
+            <Entry
+                x:Name="entryData"
+                TextColor="{StaticResource Gray900}"
+                PlaceholderColor="{StaticResource Gray300}"
+                CharacterSpacing="2"
+                Placeholder="Todo Task"
+                Text="{Binding TodoDataText}"/>
+            <Button
+                BorderColor="{StaticResource MidnightBlue}"
+                BackgroundColor="{StaticResource Magenta}"
+                TextColor="White"
+                TextTransform="Uppercase"
+                Text="Save"
+                Command="{Binding SaveTodoListCommand}" />
+
+        </StackLayout>
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding TodoDataList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:TodoDataModel">
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox
+                            Color="Silver"
+                            IsChecked="{Binding IsChecked}"/>
+                        <Label
+                            TextColor="Silver"
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            Text="{Binding Task}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
